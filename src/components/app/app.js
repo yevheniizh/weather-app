@@ -1,7 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import Card from '../card';
 
-export default class App extends PureComponent {
-  render() {
-    return <div>Hello world!</div>;
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <Card />
+    </div>
+  );
+};
+
+export default App;
