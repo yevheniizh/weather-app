@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 function Card({ city = 'Kiev' }) {
   const [info, setInfo] = useState('');
   const [isSending, setIsSending] = useState(false);
-  const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=49932468c0fb5af5071641db054eea3a`;
+  const { REACT_APP_API_URL, REACT_APP_CLIENT_KEY } = process.env;
+  const urlWeather = `${REACT_APP_API_URL}/data/2.5/weather?q=${city}&units=metric&APPID=${REACT_APP_CLIENT_KEY}`;
 
   useEffect(() => {
     fetch(urlWeather)
