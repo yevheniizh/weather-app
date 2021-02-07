@@ -1,0 +1,114 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+%flex-style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 20px;
+  // min-width: 320px;
+  width: 20rem;
+  border: 1px solid $light;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px 1rem rgba(0, 0, 0, 0.1);
+
+  .card-title {
+    @extend %flex-style;
+
+    width: 100%;
+    height: 5rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+  }
+
+  .card-container {
+    width: 100%;
+
+    .card-container__main {
+      @extend %flex-style;
+
+      width: 100%;
+      text-align: center;
+      flex-direction: row;
+
+      & img {
+        margin: 0;
+        padding: 0;
+        width: 200px;
+      }
+
+      .card-main__item {
+        @extend %flex-style;
+
+        flex-direction: row;
+        width: 50%;
+      }
+
+      .card-main__item_temperature {
+        font-size: 4rem;
+        font-weight: 200;
+        width: 50%;
+      }
+
+      &:first-child {
+        border-bottom: 1px solid $secondary;
+      }
+    }
+
+    .card-container__secondary {
+      @extend %flex-style;
+
+      width: 100%;
+      height: 3rem;
+      text-align: center;
+      flex-direction: row;
+
+      .card-secondary__item {
+        @extend %flex-style;
+
+        flex-direction: row;
+        width: 50%;
+
+        .card-item__icon {
+          color: $secondary;
+          margin-right: 0.5rem;
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .update {
+      @extend %flex-style;
+
+      flex-direction: row;
+      width: 100%;
+      margin-bottom: 0.5rem;
+
+      div {
+        margin-left: 0.5rem;
+      }
+    }
+
+    .remove {
+      @extend %flex-style;
+
+      flex-direction: row;
+      width: 100%;
+      text-decoration: none;
+      outline: none;
+      border: none;
+      box-shadow: none;
+
+      div {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
