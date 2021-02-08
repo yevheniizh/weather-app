@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+import { connect } from 'react-redux';
+import { removeCity } from '../../redux/actions';
+
 import { Button } from 'react-bootstrap';
 import { FaTrashAlt, FaRedo, FaUmbrella, FaWind } from 'react-icons/fa';
 
 import styles from './card.module.scss';
 
-function Card({ city = 'Kiev' }) {
+function Card({ city = 'Kiev', onClickRemoveCity }) {
   const [weatherNowIconURL, setWeatherNowIconURL] = useState('');
   const [weatherNowTemperature, setWeatherNowTemperature] = useState('');
   const [weatherNowWindy, setWeatherNowWindy] = useState('');
@@ -35,6 +38,11 @@ function Card({ city = 'Kiev' }) {
     setWeatherNowHumidity(weatherNowHumidity);
     console.log(data);
   }
+
+  const handleRemoveCity = (event) => {
+    event.preventDefault();
+    onClickRemoveCity(city);
+  };
 
   return (
     <div className={styles['card']}>
@@ -82,6 +90,7 @@ function Card({ city = 'Kiev' }) {
           className={styles['card-button__remove']}
           variant="outline-secondary"
           type="button"
+          onClick={handleRemoveCity}
         >
           <FaTrashAlt />
           <div className={styles['card-button__remove_description']}>
@@ -93,4 +102,8 @@ function Card({ city = 'Kiev' }) {
   );
 }
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  onClickRemoveCity: (city) => dispatch(removeCity(city)),
+});
+
+export default connect(null, mapDispatchToProps)(Card);
