@@ -8,9 +8,9 @@ function CardContainer() {
   return (
     <div className={styles['card-container']}>
       <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Card city={'Kharkiv'} />
+      <Card city={'New York'} />
+      <Card city={'Oslo'} />
     </div>
   );
 }
