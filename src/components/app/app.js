@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from '../card';
+import CardContainer from '../card-container';
 
 const App = () => {
   return (
     <div>
-      <Card />
+      <CardContainer />
     </div>
   );
 };

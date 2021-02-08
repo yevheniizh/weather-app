@@ -1,0 +1,8 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+.card-container {
+  margin: 3rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
