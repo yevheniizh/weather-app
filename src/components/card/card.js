@@ -40,30 +40,26 @@ function Card({ city = 'Kiev' }) {
     <div className={styles['card']}>
       <h2 className={styles['card-title']}>{city}</h2>
 
-      <div className={styles['card-container']}>
-        <div className={styles['card-container__main']}>
-          <div className={styles['card-main__item']}>
-            <img alt="weatherNowIcon" src={weatherNowIconURL} />
+      <div className={styles['card-info']}>
+        <div className={styles['card-info__main']}>
+          <div className={styles['card-info__main_img']}>
+            <img alt="weather now icon" src={weatherNowIconURL} />
           </div>
-          <div
-            className={
-              (styles['card-main__item'], styles['card-main__item_temperature'])
-            }
-          >
+          <div className={styles['card-info__main_temperature']}>
             {weatherNowTemperature}&deg;
           </div>
         </div>
 
-        <div className={styles['card-container__secondary']}>
-          <div className={styles['card-secondary__item']}>
-            <div className={styles['card-item__icon']}>
+        <div className={styles['card-info__secondary']}>
+          <div className={styles['card-info__secondary-item']}>
+            <div className={styles['card-info__secondary-icon']}>
               <FaWind />
             </div>
             <div>{weatherNowWindy}m/s</div>
           </div>
 
-          <div className={styles['card-secondary__item']}>
-            <div className={styles['card-item__icon']}>
+          <div className={styles['card-info__secondary-item']}>
+            <div className={styles['card-info__secondary-icon']}>
               <FaUmbrella />
             </div>
             <div>{weatherNowHumidity}%</div>
@@ -71,22 +67,26 @@ function Card({ city = 'Kiev' }) {
         </div>
 
         <Button
-          className={(styles['button-item'], styles.update)}
+          className={styles['card-button__update']}
           variant="outline-primary"
           type="button"
           onClick={updateData}
         >
           <FaRedo />
-          <div>Update</div>
+          <div className={styles['card-button__update_description']}>
+            Update
+          </div>
         </Button>
 
         <Button
-          className={(styles['button-item'], styles.remove)}
+          className={styles['card-button__remove']}
           variant="outline-secondary"
           type="button"
         >
           <FaTrashAlt />
-          <div>Remove</div>
+          <div className={styles['card-button__remove_description']}>
+            Remove
+          </div>
         </Button>
       </div>
     </div>

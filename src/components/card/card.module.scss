@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 }
 
 .card {
@@ -28,30 +29,30 @@
     font-weight: 700;
   }
 
-  .card-container {
+  .card-info {
     width: 100%;
 
-    .card-container__main {
+    .card-info__main {
       @extend %flex-style;
 
       width: 100%;
       text-align: center;
-      flex-direction: row;
 
-      & img {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-      }
-
-      .card-main__item {
+      .card-info__main_img {
         @extend %flex-style;
 
-        flex-direction: row;
         width: 50%;
+
+        & img {
+          margin: 0;
+          padding: 0;
+          width: 200px;
+        }
       }
 
-      .card-main__item_temperature {
+      .card-info__main_temperature {
+        @extend %flex-style;
+
         font-size: 4rem;
         font-weight: 200;
         width: 50%;
@@ -62,21 +63,19 @@
       }
     }
 
-    .card-container__secondary {
+    .card-info__secondary {
       @extend %flex-style;
 
       width: 100%;
       height: 3rem;
       text-align: center;
-      flex-direction: row;
 
-      .card-secondary__item {
+      .card-info__secondary-item {
         @extend %flex-style;
 
-        flex-direction: row;
         width: 50%;
 
-        .card-item__icon {
+        .card-info__secondary-icon {
           color: $secondary;
           margin-right: 0.5rem;
           font-size: 1.25rem;
@@ -84,29 +83,27 @@
       }
     }
 
-    .update {
+    .card-button__update {
       @extend %flex-style;
 
-      flex-direction: row;
       width: 100%;
       margin-bottom: 0.5rem;
 
-      div {
+      .card-button__remove_description {
         margin-left: 0.5rem;
       }
     }
 
-    .remove {
+    .card-button__remove {
       @extend %flex-style;
 
-      flex-direction: row;
       width: 100%;
       text-decoration: none;
       outline: none;
       border: none;
       box-shadow: none;
 
-      div {
+      .card-button__remove_description {
         margin-left: 0.5rem;
       }
     }
