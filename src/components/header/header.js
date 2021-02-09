@@ -21,11 +21,33 @@ function Header({ onSubmit }) {
   const day = new Date().toLocaleDateString('en-US', dayOptions);
   const time = new Date().toLocaleTimeString('en-US', timeOptions);
 
-  const handleChange = (event) => setValue(event.target.value);
+  const handleChange = (event) => {
+    const inputValue = event.target.value;
+    setValue(inputValue);
+  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    onSubmit(value);
+    await getWeather(value);
+  };
+
+  const getWeather = async (inputValue) => {
+    const { REACT_APP_API_URL, REACT_APP_CLIENT_KEY } = process.env;
+    const urlWeather = `${REACT_APP_API_URL}/data/2.5/weather?q=${inputValue}&units=metric&APPID=${REACT_APP_CLIENT_KEY}`;
+
+    try {
+      const response = await fetch(urlWeather);
+
+      if (response.status === 200) {
+        let data = await response.json();
+        console.log(data);
+        onSubmit(inputValue);
+      } else {
+        throw new Error(response.statusText);
+      }
+    } catch (err) {
+      alert(`${err.message}. Please try again`);
+    }
   };
 
   return (
