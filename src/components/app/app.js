@@ -1,13 +1,15 @@
 import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Header from '../header';
-import CardContainer from '../card-container';
+import MainPage from '../../pages/main-page';
 
 const App = () => {
   return (
     <div>
-      <Header />
-      <CardContainer />
+      <Switch>
+        <Redirect exact from="/" to="/weather-now" />
+        <Route path="/weather-now" exact component={MainPage} />
+      </Switch>
     </div>
   );
 };
