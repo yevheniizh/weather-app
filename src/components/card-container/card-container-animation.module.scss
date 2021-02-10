@@ -1,0 +1,21 @@
+.enter {
+  opacity: 0;
+  transform: scaleY(0);
+  height: 0;
+}
+
+.enterActive {
+  opacity: 1;
+  height: 100%;
+  transform: scaleY(1);
+  transition: all 500ms ease-in;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
