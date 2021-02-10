@@ -36,7 +36,24 @@ function Card({ city = 'Kiev', onClickRemoveCity }) {
     setWeatherNowTemperature(weatherNowTemperature);
     setWeatherNowWindy(weatherNowWindy);
     setWeatherNowHumidity(weatherNowHumidity);
-    console.log(data);
+  }
+
+  async function updateData2(event) {
+    event.preventDefault();
+    const response = await fetch(urlWeather);
+    const data = await response.json();
+
+    const weatherNowIcon = data.weather[0].icon;
+    const weatherNowIconURL =
+      'http://openweathermap.org/img/wn/' + weatherNowIcon + '@4x.png';
+    const weatherNowTemperature = data.main.temp.toFixed(0);
+    const weatherNowWindy = data.wind.speed;
+    const weatherNowHumidity = data.main.humidity;
+
+    setWeatherNowIconURL(weatherNowIconURL);
+    setWeatherNowTemperature(weatherNowTemperature);
+    setWeatherNowWindy(weatherNowWindy);
+    setWeatherNowHumidity(weatherNowHumidity);
   }
 
   const handleRemoveCity = (event) => {
@@ -78,7 +95,7 @@ function Card({ city = 'Kiev', onClickRemoveCity }) {
           className={styles['card-button__update']}
           variant="outline-primary"
           type="button"
-          onClick={updateData}
+          onClickCapture={updateData2}
         >
           <FaRedo />
           <div className={styles['card-button__update_description']}>
@@ -90,7 +107,7 @@ function Card({ city = 'Kiev', onClickRemoveCity }) {
           className={styles['card-button__remove']}
           variant="outline-secondary"
           type="button"
-          onClick={handleRemoveCity}
+          onClickCapture={handleRemoveCity}
         >
           <FaTrashAlt />
           <div className={styles['card-button__remove_description']}>

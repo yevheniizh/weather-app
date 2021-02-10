@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div>
       <Switch>
-        <Redirect exact from="/" to="/weather-now" />
-        <Route path="/weather-now" exact component={MainPage} />
+        <Redirect exact from="/" to="/weather-app" />
+        <Route path="/weather-app" exact component={MainPage} />
       </Switch>
     </div>
   );

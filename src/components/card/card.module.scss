@@ -76,6 +76,9 @@
         width: 50%;
 
         .card-info__secondary-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           color: $secondary;
           margin-right: 0.5rem;
           font-size: 1.25rem;

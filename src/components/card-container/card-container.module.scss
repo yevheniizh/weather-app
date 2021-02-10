@@ -1,9 +1,26 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 
 .card-container {
-  margin: 3rem;
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
   justify-content: flex-end;
+  .card-container__item {
+  }
+}
+
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: $secondary;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: $secondary;
+    transform: scale(1.05);
+  }
 }
