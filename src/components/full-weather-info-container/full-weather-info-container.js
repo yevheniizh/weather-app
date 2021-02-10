@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import styles from './full-weather-info-container.module.scss';
+
 function FullWeatherInfoContainer({ city }) {
   const [forecastList, setForecastList] = useState(null);
 
@@ -35,7 +37,9 @@ function FullWeatherInfoContainer({ city }) {
 
         return `<div style="--value: ${Math.floor(
           item * scale
-        )}" data-tooltip="${percent}%">${item}&deg;</div>`;
+        )}" data-tooltip="${percent}%">
+          <span className={styles['test2']}>${item.toFixed(0)}&deg;</span>
+        </div>`;
       })
       .join('');
 
@@ -43,13 +47,15 @@ function FullWeatherInfoContainer({ city }) {
   };
 
   return (
-    <div className="FullWeatherInfoContainer">
-      <div>
-        <div>City is {city}</div>
-        <div>Full Weather Info Container</div>
-        <div dangerouslySetInnerHTML={forecastList} />
-      </div>
-    </div>
+    <>
+      <div
+        dangerouslySetInnerHTML={forecastList}
+        className={
+          (styles['full-weather-info-container__chart'],
+          styles['column-chart__chart'])
+        }
+      />
+    </>
   );
 }
 
