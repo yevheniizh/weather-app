@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
 
-function FullWeatherInfoContainer() {
-  const { city } = useParams();
-
+function FullWeatherInfoContainer({ city }) {
   const [forecastList, setForecastList] = useState(null);
 
   const { REACT_APP_API_URL, REACT_APP_CLIENT_KEY } = process.env;
@@ -52,11 +49,6 @@ function FullWeatherInfoContainer() {
         <div>Full Weather Info Container</div>
         <div dangerouslySetInnerHTML={forecastList} />
       </div>
-      <Link to={`/`}>
-        <button type="button" className="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </Link>
     </div>
   );
 }

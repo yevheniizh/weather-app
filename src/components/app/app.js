@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import MainPage from '../../pages/main-page';
 
-import FullWeatherInfoContainer from '../full-weather-info-container';
+import FullWeatherInfoPage from '../../pages/full-weather-info-page';
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
         <Route
           path="/weather-app/:city"
           exact
-          component={FullWeatherInfoContainer}
+          component={FullWeatherInfoPage}
         />
       </Switch>
     </div>
