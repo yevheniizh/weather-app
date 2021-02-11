@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -8,15 +8,18 @@ import Card from '../card';
 import styles from './card-container.module.scss';
 import animationStyles from './card-container-animation.module.scss';
 import {
-  citiesSelector,
+  citiesInfoSelector,
   citiesLoadingSelector,
   citiesLoadedSelector,
 } from '../../redux/selectors';
 
-function CardContainer({ cities, loading, loaded }) {
+function CardContainer({ loading, loaded, citiesInfo }) {
   let match = useRouteMatch();
 
-  if (Object.entries(cities).length === 0 && cities.constructor === Object) {
+  if (
+    Object.entries(citiesInfo).length === 0 &&
+    citiesInfo.constructor === Object
+  ) {
     return (
       <div className={styles['card-container__no-cities']}>
         <div className={styles['card-container__no-cities_message']}>
@@ -29,7 +32,7 @@ function CardContainer({ cities, loading, loaded }) {
   return (
     <>
       <TransitionGroup className={styles['card-container']}>
-        {Object.keys(cities).map((city) => (
+        {Object.entries(citiesInfo).map(([city, info]) => (
           <CSSTransition
             key={city}
             timeout={500}
@@ -37,7 +40,7 @@ function CardContainer({ cities, loading, loaded }) {
             className={styles['card-container__item']}
           >
             <Link to={`${match.path}/${city}`}>
-              <Card key={city} city={city} />
+              <Card key={city} city={city} info={info} />
             </Link>
           </CSSTransition>
         ))}
@@ -47,10 +50,9 @@ function CardContainer({ cities, loading, loaded }) {
 }
 
 const mapStateToProps = (state) => ({
-  // cities: state.cities,
-  cities: citiesSelector(state),
   loading: citiesLoadingSelector(state),
   loaded: citiesLoadedSelector(state),
+  citiesInfo: citiesInfoSelector(state),
 });
 
 export default connect(mapStateToProps)(CardContainer);

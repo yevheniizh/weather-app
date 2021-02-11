@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { connect } from 'react-redux';
 import { removeCity } from '../../redux/actions';
@@ -8,53 +8,11 @@ import { FaTrashAlt, FaRedo, FaUmbrella, FaWind } from 'react-icons/fa';
 
 import styles from './card.module.scss';
 
-function Card({ city = 'Kiev', onClickRemoveCity }) {
-  const [weatherNowIconURL, setWeatherNowIconURL] = useState('');
-  const [weatherNowTemperature, setWeatherNowTemperature] = useState('');
-  const [weatherNowWindy, setWeatherNowWindy] = useState('');
-  const [weatherNowHumidity, setWeatherNowHumidity] = useState('');
+function Card({ city, info, onClickRemoveCity }) {
+  const { humidity, speed, icon } = info;
 
-  const { REACT_APP_API_URL, REACT_APP_CLIENT_KEY } = process.env;
-  const urlWeather = `${REACT_APP_API_URL}/data/2.5/weather?q=${city}&units=metric&APPID=${REACT_APP_CLIENT_KEY}`;
-
-  useEffect(() => {
-    updateData();
-  }, []); // eslint-disable-line
-
-  async function updateData() {
-    const response = await fetch(urlWeather);
-    const data = await response.json();
-
-    const weatherNowIcon = data.weather[0].icon;
-    const weatherNowIconURL =
-      'http://openweathermap.org/img/wn/' + weatherNowIcon + '@4x.png';
-    const weatherNowTemperature = data.main.temp.toFixed(0);
-    const weatherNowWindy = data.wind.speed;
-    const weatherNowHumidity = data.main.humidity;
-
-    setWeatherNowIconURL(weatherNowIconURL);
-    setWeatherNowTemperature(weatherNowTemperature);
-    setWeatherNowWindy(weatherNowWindy);
-    setWeatherNowHumidity(weatherNowHumidity);
-  }
-
-  async function updateData2(event) {
-    event.preventDefault();
-    const response = await fetch(urlWeather);
-    const data = await response.json();
-
-    const weatherNowIcon = data.weather[0].icon;
-    const weatherNowIconURL =
-      'http://openweathermap.org/img/wn/' + weatherNowIcon + '@4x.png';
-    const weatherNowTemperature = data.main.temp.toFixed(0);
-    const weatherNowWindy = data.wind.speed;
-    const weatherNowHumidity = data.main.humidity;
-
-    setWeatherNowIconURL(weatherNowIconURL);
-    setWeatherNowTemperature(weatherNowTemperature);
-    setWeatherNowWindy(weatherNowWindy);
-    setWeatherNowHumidity(weatherNowHumidity);
-  }
+  const temperature = info.temp.toFixed(0);
+  const iconURL = 'http://openweathermap.org/img/wn/' + icon + '@4x.png';
 
   const handleRemoveCity = (event) => {
     event.preventDefault();
@@ -68,10 +26,10 @@ function Card({ city = 'Kiev', onClickRemoveCity }) {
       <div className={styles['card-info']}>
         <div className={styles['card-info__main']}>
           <div className={styles['card-info__main_img']}>
-            <img alt="weather now icon" src={weatherNowIconURL} />
+            <img alt="weather now icon" src={iconURL} />
           </div>
           <div className={styles['card-info__main_temperature']}>
-            {weatherNowTemperature}&deg;
+            {temperature}&deg;
           </div>
         </div>
 
@@ -80,14 +38,14 @@ function Card({ city = 'Kiev', onClickRemoveCity }) {
             <div className={styles['card-info__secondary-icon']}>
               <FaWind />
             </div>
-            <div>{weatherNowWindy}m/s</div>
+            <div>{speed}m/s</div>
           </div>
 
           <div className={styles['card-info__secondary-item']}>
             <div className={styles['card-info__secondary-icon']}>
               <FaUmbrella />
             </div>
-            <div>{weatherNowHumidity}%</div>
+            <div>{humidity}%</div>
           </div>
         </div>
 
@@ -95,7 +53,7 @@ function Card({ city = 'Kiev', onClickRemoveCity }) {
           className={styles['card-button__update']}
           variant="outline-primary"
           type="button"
-          onClickCapture={updateData2}
+          // onClickCapture={updateData2}
         >
           <FaRedo />
           <div className={styles['card-button__update_description']}>
