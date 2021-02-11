@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { removeCity } from '../../redux/actions';
+import { removeCity, updateCity } from '../../redux/actions';
 
 import { Button } from 'react-bootstrap';
 import { FaTrashAlt, FaRedo, FaUmbrella, FaWind } from 'react-icons/fa';
 
 import styles from './card.module.scss';
 
-function Card({ city, info, onClickRemoveCity }) {
+function Card({ city, info, onClickRemoveCity, onClickUpdateCity }) {
   const { humidity, speed, icon } = info;
 
   const temperature = info.temp.toFixed(0);
@@ -17,6 +17,11 @@ function Card({ city, info, onClickRemoveCity }) {
   const handleRemoveCity = (event) => {
     event.preventDefault();
     onClickRemoveCity(city);
+  };
+
+  const handleUpdateCity = (event) => {
+    event.preventDefault();
+    onClickUpdateCity(city);
   };
 
   return (
@@ -53,7 +58,7 @@ function Card({ city, info, onClickRemoveCity }) {
           className={styles['card-button__update']}
           variant="outline-primary"
           type="button"
-          // onClickCapture={updateData2}
+          onClickCapture={handleUpdateCity}
         >
           <FaRedo />
           <div className={styles['card-button__update_description']}>
@@ -79,6 +84,7 @@ function Card({ city, info, onClickRemoveCity }) {
 
 const mapDispatchToProps = (dispatch) => ({
   onClickRemoveCity: (city) => dispatch(removeCity(city)),
+  onClickUpdateCity: (city) => dispatch(updateCity(city)),
 });
 
 export default connect(null, mapDispatchToProps)(Card);

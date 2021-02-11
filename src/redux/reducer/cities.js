@@ -1,4 +1,11 @@
-import { ADD_CITY, REMOVE_CITY, REQUEST, SUCCESS, FAILURE } from '../constants';
+import {
+  ADD_CITY,
+  UPDATE_CITY,
+  REMOVE_CITY,
+  REQUEST,
+  SUCCESS,
+  FAILURE,
+} from '../constants';
 
 const initialState = {
   entities: {},
@@ -19,15 +26,35 @@ export default (state = initialState, action) => {
       };
 
     case ADD_CITY + SUCCESS:
-      const city = payload.value;
-
       return {
         ...state,
-        entities: { [city]: data, ...state.entities },
+        entities: { [payload.value]: data, ...state.entities },
         loading: false,
         loaded: true,
       };
     case ADD_CITY + FAILURE:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        error,
+      };
+
+    case UPDATE_CITY + REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+
+    case UPDATE_CITY + SUCCESS:
+      return {
+        ...state,
+        entities: { [payload.value]: data, ...state.entities },
+        loading: false,
+        loaded: true,
+      };
+    case UPDATE_CITY + FAILURE:
       return {
         ...state,
         loading: false,
