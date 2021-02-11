@@ -4,24 +4,12 @@ import { addCity } from '../../redux/actions';
 
 import escapeHtml from '../../utils/escape-html';
 
+import TimeContainer from '../time-container';
+
+import styles from './header.module.scss';
+
 function Header({ onSubmit }) {
   const [value, setValue] = useState('');
-
-  const dayOptions = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  };
-
-  const timeOptions = {
-    hour: '2-digit',
-    hour12: false,
-    minute: '2-digit',
-  };
-
-  const day = new Date().toLocaleDateString('en-US', dayOptions);
-  const time = new Date().toLocaleTimeString('en-US', timeOptions);
 
   const handleChange = (event) => {
     const inputValue = escapeHtml(event.target.value);
@@ -53,18 +41,22 @@ function Header({ onSubmit }) {
   };
 
   return (
-    <div>
-      <div>
-        <div>{day}</div>
-        <div>{time}</div>
+    <div className={styles['header']}>
+      <div className={styles['header-time']}>
+        <TimeContainer />
       </div>
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className={styles['header-form']}>
+        <form onSubmit={handleSubmit} className="input-group">
           <input
             onChange={handleChange}
-            placeholder="Enter city name on English"
+            placeholder="Enter city on English"
+            type="search"
+            className="form-control rounded"
+            aria-label="Search"
           ></input>
-          <button type="submit">Add New City</button>
+          <button type="submit" className="btn btn-primary">
+            Add New City
+          </button>
         </form>
       </div>
     </div>

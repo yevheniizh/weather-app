@@ -1,0 +1,25 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  width: 100%;
+  margin: 0;
+
+  .header-time {
+    font-size: 2rem;
+  }
+  .header-form {
+    display: flex;
+
+    input {
+      width: 20rem;
+    }
+
+    button {
+      font-weight: 500;
+    }
+  }
+}
