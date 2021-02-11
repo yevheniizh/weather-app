@@ -5,9 +5,11 @@ import MainPage from '../../pages/main-page';
 
 import FullWeatherInfoPage from '../../pages/full-weather-info-page';
 
+import './app.module.scss';
+
 const App = () => {
   return (
-    <div>
+    <>
       <Switch>
         <Redirect exact from="/" to="/weather-app" />
         <Route path="/weather-app" exact component={MainPage} />
@@ -17,7 +19,7 @@ const App = () => {
           component={FullWeatherInfoPage}
         />
       </Switch>
-    </div>
+    </>
   );
 };
 
