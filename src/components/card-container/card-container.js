@@ -30,14 +30,6 @@ function CardContainer({ citiesLoading, citiesLoaded, citiesInfo, error }) {
     );
   }
 
-  if (error) {
-    return (
-      <div className={styles['card-container__error']}>
-        Something went wrong 😭
-      </div>
-    );
-  }
-
   return (
     <>
       <TransitionGroup className={styles['card-container']}>

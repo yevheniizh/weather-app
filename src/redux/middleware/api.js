@@ -11,11 +11,13 @@ export default (store) => (next) => async (action) => {
     const res = await fetch(CallAPI);
     const data = await res.json();
 
-    if (!res.ok) throw data;
+    if (!res.ok) {
+      throw res.statusText;
+    }
 
     next({ ...rest, type: type + SUCCESS, data });
   } catch (error) {
-    alert(`This ${error.message}. Please try again`);
+    alert(`${error}. Please try again`);
     next({ ...rest, type: type + FAILURE, error });
   }
 };
