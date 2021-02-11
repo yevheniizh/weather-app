@@ -1,12 +1,27 @@
 .full-weather-info-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   height: 5rem;
   width: 100%;
   margin: 0;
 
+  .full-weather-info-header__location {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .full-weather-info-header__location-city {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .full-weather-info-header__location-time {
+      font-size: 1rem;
+    }
+  }
+
   span {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
