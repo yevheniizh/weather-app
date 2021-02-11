@@ -2,7 +2,7 @@
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 0.5fr));
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -39,7 +39,7 @@ a:link {
   &:hover,
   &:active {
     text-decoration: none;
-    color: $secondary;
-    transform: scale(1.05);
+    color: $dark;
+    transform: scale(1.025);
   }
 }
