@@ -1,16 +1,15 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 
-.full-weather-info-container__chart {
-  height: 10rem;
+.full-weather-info-container {
   --chart-height: 100;
-}
-.column-chart__chart {
   width: 100%;
-  height: calc(var(--chart-height) * 1px);
+  // height: calc(var(--chart-height) * 1px);
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  border: 1px solid $secondary;
 
   & div {
     display: flex;

@@ -47,15 +47,10 @@ function FullWeatherInfoContainer({ city }) {
   };
 
   return (
-    <>
-      <div
-        dangerouslySetInnerHTML={forecastList}
-        className={
-          (styles['full-weather-info-container__chart'],
-          styles['column-chart__chart'])
-        }
-      />
-    </>
+    <div
+      dangerouslySetInnerHTML={forecastList}
+      className={styles['full-weather-info-container']}
+    />
   );
 }
 
