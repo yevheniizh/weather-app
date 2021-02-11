@@ -4,6 +4,7 @@ const citiesSelector = (state) => state.cities.entities;
 
 export const citiesLoadedSelector = (state) => state.cities.loaded;
 export const citiesLoadingSelector = (state) => state.cities.loading;
+export const citiesErrorSelector = (state) => state.cities.error;
 
 // filter neccesary data from response
 export const citiesInfoSelector = createSelector(citiesSelector, (cities) =>

@@ -11,9 +11,10 @@ import {
   citiesInfoSelector,
   citiesLoadingSelector,
   citiesLoadedSelector,
+  citiesErrorSelector,
 } from '../../redux/selectors';
 
-function CardContainer({ loading, loaded, citiesInfo }) {
+function CardContainer({ citiesLoading, citiesLoaded, citiesInfo, error }) {
   let match = useRouteMatch();
 
   if (
@@ -25,6 +26,14 @@ function CardContainer({ loading, loaded, citiesInfo }) {
         <div className={styles['card-container__no-cities_message']}>
           No cities yet. Add the first city 💅
         </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles['card-container__error']}>
+        Something went wrong 😭
       </div>
     );
   }
@@ -50,8 +59,9 @@ function CardContainer({ loading, loaded, citiesInfo }) {
 }
 
 const mapStateToProps = (state) => ({
-  loading: citiesLoadingSelector(state),
-  loaded: citiesLoadedSelector(state),
+  error: citiesErrorSelector(state),
+  citiesLoading: citiesLoadingSelector(state),
+  citiesLoaded: citiesLoadedSelector(state),
   citiesInfo: citiesInfoSelector(state),
 });
 
