@@ -7,6 +7,18 @@
   margin-top: 2rem;
 }
 
+.card-container__no-cities {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+
+  .card-container__no-cities_message {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+
 a,
 a:visited,
 a:link {

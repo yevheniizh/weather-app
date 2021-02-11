@@ -13,8 +13,10 @@ function CardContainer({ cities }) {
 
   if (Object.entries(cities).length === 0 && cities.constructor === Object) {
     return (
-      <div>
-        <h1>Add the first city</h1>
+      <div className={styles['card-container__no-cities']}>
+        <div className={styles['card-container__no-cities_message']}>
+          No cities yet. Add the first city 💅
+        </div>
       </div>
     );
   }
