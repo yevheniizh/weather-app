@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addCity } from '../../redux/actions';
 
+import escapeHtml from '../../utils/escape-html';
+
 function Header({ onSubmit }) {
   const [value, setValue] = useState('');
 
@@ -22,7 +24,7 @@ function Header({ onSubmit }) {
   const time = new Date().toLocaleTimeString('en-US', timeOptions);
 
   const handleChange = (event) => {
-    const inputValue = event.target.value;
+    const inputValue = escapeHtml(event.target.value);
     setValue(inputValue);
   };
 
