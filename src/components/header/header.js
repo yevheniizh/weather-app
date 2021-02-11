@@ -16,28 +16,9 @@ function Header({ onSubmit }) {
     setValue(inputValue);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    await getWeather(value);
-  };
-
-  const getWeather = async (inputValue) => {
-    const { REACT_APP_API_URL, REACT_APP_CLIENT_KEY } = process.env;
-    const urlWeather = `${REACT_APP_API_URL}/data/2.5/weather?q=${inputValue}&units=metric&APPID=${REACT_APP_CLIENT_KEY}`;
-
-    try {
-      const response = await fetch(urlWeather);
-
-      if (response.status === 200) {
-        let data = await response.json();
-        console.log(data);
-        onSubmit(inputValue);
-      } else {
-        throw new Error(response.statusText);
-      }
-    } catch (err) {
-      alert(`${err.message}. Please try again`);
-    }
+    onSubmit(value);
   };
 
   return (
