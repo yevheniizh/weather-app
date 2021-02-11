@@ -6,7 +6,7 @@ export default (state = {}, action) => {
   switch (type) {
     case ADD_CITY:
       console.log(payload);
-      return { ...state, [payload.value]: payload.value };
+      return { [payload.value]: payload.value, ...state };
 
     case REMOVE_CITY:
       const cities = { ...state };

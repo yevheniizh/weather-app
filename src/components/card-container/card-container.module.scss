@@ -1,12 +1,10 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 
 .card-container {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap-reverse;
-  justify-content: flex-end;
-  .card-container__item {
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 a,
