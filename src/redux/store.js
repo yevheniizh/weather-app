@@ -1,5 +1,6 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import api from './middleware/api';
 import reducer from './reducer';
 
 function saveToLocalStorage(state) {
@@ -25,7 +26,7 @@ function loadFromLocalStorage() {
 const store = createStore(
   reducer,
   loadFromLocalStorage(),
-  composeWithDevTools()
+  composeWithDevTools(applyMiddleware(api))
 );
 
 store.subscribe(() => saveToLocalStorage(store.getState()));

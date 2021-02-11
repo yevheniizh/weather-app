@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -7,8 +7,13 @@ import Card from '../card';
 
 import styles from './card-container.module.scss';
 import animationStyles from './card-container-animation.module.scss';
+import {
+  citiesSelector,
+  citiesLoadingSelector,
+  citiesLoadedSelector,
+} from '../../redux/selectors';
 
-function CardContainer({ cities }) {
+function CardContainer({ cities, loading, loaded }) {
   let match = useRouteMatch();
 
   if (Object.entries(cities).length === 0 && cities.constructor === Object) {
@@ -24,7 +29,7 @@ function CardContainer({ cities }) {
   return (
     <>
       <TransitionGroup className={styles['card-container']}>
-        {Object.values(cities).map((city) => (
+        {Object.keys(cities).map((city) => (
           <CSSTransition
             key={city}
             timeout={500}
@@ -42,7 +47,10 @@ function CardContainer({ cities }) {
 }
 
 const mapStateToProps = (state) => ({
-  cities: state.cities,
+  // cities: state.cities,
+  cities: citiesSelector(state),
+  loading: citiesLoadingSelector(state),
+  loaded: citiesLoadedSelector(state),
 });
 
 export default connect(mapStateToProps)(CardContainer);
