@@ -63,12 +63,15 @@ export default (state = initialState, action) => {
       };
 
     case REMOVE_CITY:
-      const cities = { ...state };
-      console.log(cities);
-      delete cities[payload.city];
-      console.log(cities);
+      const newEntities = { ...state.entities };
 
-      return cities;
+      delete newEntities[payload.value];
+      console.log(newEntities);
+
+      return {
+        ...state,
+        entities: { ...newEntities },
+      };
     default:
       return state;
   }

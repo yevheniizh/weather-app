@@ -14,7 +14,7 @@ export const updateCity = (value) => ({
   CallAPI: `${REACT_APP_API_URL}/data/2.5/weather?q=${value}&units=metric&APPID=${REACT_APP_CLIENT_KEY}`,
 });
 
-export const removeCity = (city) => ({
+export const removeCity = (value) => ({
   type: REMOVE_CITY,
-  payload: { city },
+  payload: { value },
 });
