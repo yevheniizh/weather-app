@@ -1,0 +1,24 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+.time-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  border: black;
+
+  .time-container__day {
+    font-weight: 600;
+    padding-right: 1rem;
+    border-right: 1px solid $secondary;
+  }
+  .time-container__time {
+    color: $secondary;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-left: 1rem;
+  }
+}
