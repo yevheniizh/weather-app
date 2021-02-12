@@ -9,38 +9,35 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  border: 1px solid $secondary;
+  border-left: 1px solid $secondary;
+  border-right: 1px solid $secondary;
+  padding-right: 3px;
 
   & div {
-    display: flex;
     height: calc(var(--value) * 1px);
-    // background-color: green;
     min-width: 1px;
-    flex-grow: 1;
+    width: 100%;
     margin: 0 0 0 1px;
     cursor: pointer;
     text-align: center;
 
-    span {
-      display: flex;
+    & div {
+      display: block;
       width: 100%;
+      background-color: rgb(153, 204, 255);
       height: 2rem;
-      align-items: flex-start;
-      background-color: $secondary;
-      opacity: 0.8;
-      justify-content: center;
-      align-items: center;
+
+      &:last-child {
+        background-color: white;
+        padding-top: 0.5rem;
+      }
+
+      // @if (var(--temperature)) > 0 {
+      //   background-color: red;
+      // }
+      // @if (var(--temperature)) < 0 {
+      //   background-color: rgb(153, 204, 255);
+      // }
     }
   }
 }
-
-// .column-chart__chart div {
-//   display: flex;
-//   height: calc(var(--value) * 1px);
-//   background-color: green;
-//   min-width: 1px;
-//   flex-grow: 1;
-//   margin: 0 0 0 1px;
-//   cursor: pointer;
-//   text-align: center;
-// }

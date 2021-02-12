@@ -27,23 +27,25 @@ function FullWeatherInfoContainer({ city }) {
 
   const getForecastBody = (data) => {
     const temperatureList = Object.values(data);
+    const chartList = Object.entries(data);
     const chartHeight = 100;
     const maxValue = Math.max(...temperatureList);
 
-    const getTemperatureList = temperatureList
-      .map((item) => {
+    const getChartList = chartList
+      .map(([time, item]) => {
         const scale = chartHeight / maxValue;
         const percent = ((item / maxValue) * 100).toFixed(0);
 
         return `<div style="--value: ${Math.floor(
           item * scale
         )}" data-tooltip="${percent}%">
-          <span>${item.toFixed(0)}&deg;</span>
+          <div style='--temperature: ${item}'>${item.toFixed(0)}&deg;</div>
+          <div>${time.slice(0, -3)}</div>
         </div>`;
       })
       .join('');
 
-    return { __html: getTemperatureList };
+    return { __html: getChartList };
   };
 
   return (
