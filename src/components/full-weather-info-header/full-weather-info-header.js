@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import TimeContainer from '../time-container';
-
 import styles from './full-weather-info-header.module.scss';
 
 function FullWeatherInfoHeader({ city }) {
@@ -12,9 +10,6 @@ function FullWeatherInfoHeader({ city }) {
         <div className={styles['full-weather-info-header__location-city']}>
           {city}
         </div>
-        <TimeContainer
-          className={styles['full-weather-info-header__location-time']}
-        />
       </div>
       <div>
         <Link to="/">
