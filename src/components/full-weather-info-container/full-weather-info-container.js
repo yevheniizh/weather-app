@@ -13,8 +13,6 @@ function FullWeatherInfoContainer({ city }) {
     fetch(urlWeather)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-
         const oneDayForecast = data.list.slice(0, 8);
         const forecastList = oneDayForecast.reduce((acc, item) => {
           acc[item.dt_txt] = item.main.temp;
@@ -23,7 +21,8 @@ function FullWeatherInfoContainer({ city }) {
         }, {});
 
         setForecastList(getForecastBody(forecastList));
-      });
+      })
+      .catch((error) => console.log(error));
   }, []); // eslint-disable-line
 
   const getForecastBody = (data) => {
