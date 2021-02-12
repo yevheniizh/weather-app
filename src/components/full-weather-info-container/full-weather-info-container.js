@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './full-weather-info-container.module.scss';
 
@@ -38,7 +39,7 @@ function FullWeatherInfoContainer({ city }) {
         return `<div style="--value: ${Math.floor(
           item * scale
         )}" data-tooltip="${percent}%">
-          <span className={styles['test2']}>${item.toFixed(0)}&deg;</span>
+          <span>${item.toFixed(0)}&deg;</span>
         </div>`;
       })
       .join('');
@@ -53,5 +54,9 @@ function FullWeatherInfoContainer({ city }) {
     />
   );
 }
+
+FullWeatherInfoContainer.propTypes = {
+  city: PropTypes.string.isRequired,
+};
 
 export default FullWeatherInfoContainer;
