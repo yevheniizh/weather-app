@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { removeCity, updateCity } from '../../redux/actions';
@@ -81,6 +82,16 @@ function Card({ city, info, onClickRemoveCity, onClickUpdateCity }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  info: PropTypes.shape({
+    humidity: PropTypes.number.isRequired,
+    speed: PropTypes.number.isRequired,
+    icon: PropTypes.string.isRequired,
+    temp: PropTypes.number.isRequired,
+  }).isRequired,
+  city: PropTypes.string.isRequired,
+};
 
 const mapDispatchToProps = (dispatch) => ({
   onClickRemoveCity: (city) => dispatch(removeCity(city)),
